@@ -1,0 +1,116 @@
+//PUCCH 1-0 static test (FDD)
+//SimuCtrl_S
+RC_FIR_Flag = 1 //1:TRUE ;0:FALSE
+AGC_Flag = 0 //1:TRUE ;0:FALSE
+AFC_Flag = 0 //1:TRUE ;0:FALSE
+ATC_Flag = 0 //1:TRUE ;0:FALSE
+PSS_SSS_DTFlag = 0 //1:TRUE ;0:FALSE
+PBCH_DTFlag = 0 //1:TRUE ;0:FALSE 
+PCFICH_DTFlag = 0 //1:TRUE ;0:FALSE 
+PDCCH_DTFlag = 0 //1:TRUE ;0:FALSE 
+PHICH_DTFlag = 0 //1:TRUE ;0:FALSE 
+EPDCCH_DTFlag = 0 //1:TRUE ;0:FALSE 
+PDSCH_DTFlag = 1 //1:TRUE ;0:FALSE 
+PMCH_DTFlag = 0 //1:TRUE ;0:FALSE 
+BLIND_PBCH_DT_Flag = 0 //1:TRUE ;0:FALSE 
+CQI_Feedback_Flag = 1 //1:TRUE ;0:FALSE
+RI_Feedback_Flag = 0 //1:TRUE ;0:FALSE
+PMI_Feedback_Flag = 0 //1:TRUE ;0:FALSE
+CQI_Th_Adapt = 1 //1:TRUE ;0:FALSE
+start_n_subframe = 0
+runlength = 2520 
+
+//Cell_Specific_S
+CellNum = 1 //uint
+	CellID = 0
+	FrameStructureType = FDD //FDD, TDD
+	HARQ_ProcNum = 8 //Number of HARQ processes per component carrier
+  MaxTxNum = 1 //Maximum number of HARQ transmission
+  RV_QPSK = 0,1,2,3 //Redundancy version coding sequence
+  RV_16QAM = 0,1,2,3 //Redundancy version coding sequence
+  RV_64QAM = 0,0,1,2 //Redundancy version coding sequence
+  RV_256QAM = 0,0,1,2 //Redundancy version coding sequence
+  EVM = 0.03
+  Ctrl_Symb_Num = 3 
+  Ctrl_Symb_Num_Special = 3
+  //MIB_S
+  dl_BandWidth = 10M //1.4M, 3M, 5M, 10M, 15M, 20M
+  phich_Duration = normal //normal, extended
+  phich_Resource = 1 //1/6, 1/2, 1, 2
+  SFN_High8bit = 0 //BIT STRING (SIZE (8)), the 8 most significant bits of the SFN
+  //SIB1_S
+  ULDLConfiguration = 2 //ENUMERATED {sa0, sa1, sa2, sa3, sa4, sa5, sa6}
+  SpecialSubframeConfiguration = 7 //ENUMERATED {ssp0, ssp1, ssp2, ssp3, ssp4,ssp5, ssp6, ssp7, ssp8}
+  //SIB2_S
+  p_b = 0 //PDSCH-Config, INTEGER (0..3)
+  //PSS_SSS_DT_S
+  CP_Type = normal //normal, extended
+  N_cell_ID = 0 //0...503, N_cell_ID=3*N_1_ID+N_2_ID
+  //PBCH_DT_S
+  CRSPortNum = 1 //1, 2, 4
+  SFN_Low2bit = 0 //0, 1, 2, 3, SFN=MIB.SFN_High8bit*4+SFN_Low2bit
+
+UeNum = 1 //uint
+  //UE_Specific_S
+  UEID = 0
+  UE_Category = 4 
+  C_RNTI = 61
+  RNTI_Type = C_RNTI //SI_RNTI, C_RNTI, P_RNTI, RA_RNTI, TPC_RNTI, Temporary_C_RNTI, SPS_RNTI
+  //RRC
+  p_a = 0
+  TM = 1
+  I_CQI_PMI = 6
+  ReportMode = RM10
+  ReportOnPUSCH = 0
+  //DCI
+  DCI_Period = 10
+  DCI_Format_Type_S1 = TM_Default
+  RB_Assignment_S1 = 0~49
+  DCI_Format_Type_S2 = TM_Default
+  RB_Assignment_S2 = 0~49
+  DCI_Format_Type_S3 = TM_Default
+  RB_Assignment_S3 = 0~49
+  DCI_Format_Type_S4 = TM_Default
+  RB_Assignment_S4 = 0~49
+  DCI_Format_Type_S6 = TM_Default
+  RB_Assignment_S6 = 0~49
+  DCI_Format_Type_S7 = TM_Default
+  RB_Assignment_S7 = 0~49
+  DCI_Format_Type_S8 = TM_Default
+  RB_Assignment_S8 = 0~49
+  DCI_Format_Type_S9 = TM_Default
+  RB_Assignment_S9 = 0~49
+  
+  //Channel_S
+  Connected_CellID = 0 //同CellID
+  ChannelType = AWGN //AWGN, EPA, EVA, ETU, HST, HST_SFN, B_2_4
+  CellType = ServingCell //ServingCell, InterfCellwiInfo, InterfCellwiInfo
+  DopplerShift = 5
+  ChanCorrInd = Low //Low, Mid, High
+  TxFreqOffset = 0
+  RxFreqOffset = 0
+  TimeOffset = 0 //单位s，必须0<=x<=512*0.001/30720=0.000016, 0.000001 = 1us, 0.000000001 = 1ns
+  RxNum = 2 //1,2,4
+  SNR = 0.0
+  
+  //Ref
+  Ref_Type = Median_CQI_Reported
+
+next_iter
+CQI_Feedback_Flag = 0 //1:TRUE ;0:FALSE
+
+next_iter
+CQI_Feedback_Flag = 0 //1:TRUE ;0:FALSE
+  
+next_iter
+CQI_Feedback_Flag = 1 //1:TRUE ;0:FALSE
+  SNR = 1.0
+
+next_iter
+CQI_Feedback_Flag = 0 //1:TRUE ;0:FALSE
+  SNR = 1.0
+
+next_iter
+CQI_Feedback_Flag = 0 //1:TRUE ;0:FALSE
+  SNR = 1.0
+ 

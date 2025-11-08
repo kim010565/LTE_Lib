@@ -1,0 +1,124 @@
+//10 MHz	R.24	OP.1 TDD	ETU70	1 x 2 Low	0.1	1.3
+//SimuCtrl_S
+RC_FIR_Flag = 1 //1:TRUE ;0:FALSE
+AGC_Flag = 0 //1:TRUE ;0:FALSE
+AFC_Flag = 0 //1:TRUE ;0:FALSE
+ATC_Flag = 0 //1:TRUE ;0:FALSE
+PSS_SSS_DTFlag = 0 //1:TRUE ;0:FALSE
+PBCH_DTFlag = 0 //1:TRUE ;0:FALSE 
+PCFICH_DTFlag = 0 //1:TRUE ;0:FALSE 
+PDCCH_DTFlag = 0 //1:TRUE ;0:FALSE 
+PHICH_DTFlag = 1 //1:TRUE ;0:FALSE 
+EPDCCH_DTFlag = 0 //1:TRUE ;0:FALSE 
+PDSCH_DTFlag = 0 //1:TRUE ;0:FALSE 
+PMCH_DTFlag = 0 //1:TRUE ;0:FALSE 
+BLIND_PBCH_DT_Flag = 0 //1:TRUE ;0:FALSE 
+CQI_Feedback_Flag = 0 //1:TRUE ;0:FALSE
+RI_Feedback_Flag = 0 //1:TRUE ;0:FALSE
+PMI_Feedback_Flag = 0 //1:TRUE ;0:FALSE
+start_n_subframe = 0
+runlength = 20000 
+
+//Cell_Specific_S
+CellNum = 1 //uint
+	CellID = 0
+	FrameStructureType = TDD //FDD, TDD
+	HARQ_ProcNum = 7 //Number of HARQ processes per component carrier
+  MaxTxNum = 4 //Maximum number of HARQ transmission
+  RV_QPSK = 0,1,2,3 //Redundancy version coding sequence
+  RV_16QAM = 0,1,2,3 //Redundancy version coding sequence
+  RV_64QAM = 0,0,1,2 //Redundancy version coding sequence
+  RV_256QAM = 0,0,1,2 //Redundancy version coding sequence
+  EVM = 0.03
+  Ctrl_Symb_Num = 2 
+  Ctrl_Symb_Num_Special = 2
+  //MIB_S
+  dl_BandWidth = 10M //1.4M, 3M, 5M, 10M, 15M, 20M
+  phich_Duration = normal //normal, extended
+  phich_Resource = 1 //1/6, 1/2, 1, 2
+  SFN_High8bit = 0 //BIT STRING (SIZE (8)), the 8 most significant bits of the SFN
+  //SIB1_S
+  ULDLConfiguration = 1 //ENUMERATED {sa0, sa1, sa2, sa3, sa4, sa5, sa6}
+  SpecialSubframeConfiguration = 4 //ENUMERATED {ssp0, ssp1, ssp2, ssp3, ssp4,ssp5, ssp6, ssp7, ssp8}
+  //SIB2_S
+  p_b = 0 //PDSCH-Config, INTEGER (0..3)
+  //PSS_SSS_DT_S
+  CP_Type = normal //normal, extended
+  N_cell_ID = 0 //0...503, N_cell_ID=3*N_1_ID+N_2_ID
+  //PBCH_DT_S
+  CRSPortNum = 1 //1, 2, 4
+  SFN_Low2bit = 0 //0, 1, 2, 3, SFN=MIB.SFN_High8bit*4+SFN_Low2bit
+  //Others
+  PHICH_RA = 0
+  PHICH_RB = 0
+
+UeNum = 1 //uint
+  //UE_Specific_S
+  UEID = 0
+  UE_Category = 4 
+  C_RNTI = 61
+  RNTI_Type = C_RNTI //SI_RNTI, C_RNTI, P_RNTI, RA_RNTI, TPC_RNTI, Temporary_C_RNTI, SPS_RNTI
+  //PHICH
+  PHICH_Period = 10
+  PHICH_Wanted_Pattern_S0 = Wanted_User, Interfering_User
+  n_group_PHICH_S0 = 0, 0
+  n_seq_PHICH_S0 = 0, 1
+  PHICH_Power_Offset_S0 = 3, 0
+  PHICH_HARQ_Pattern_S0 = ACK, Random
+  PHICH_Wanted_Pattern_S1 = Wanted_User, Interfering_User
+  n_group_PHICH_S1 = 0, 0
+  n_seq_PHICH_S1 = 0, 1
+  PHICH_Power_Offset_S1 = 3, 0
+  PHICH_HARQ_Pattern_S1 = ACK, Random
+  PHICH_Wanted_Pattern_S4 = Wanted_User, Interfering_User
+  n_group_PHICH_S4 = 0, 0
+  n_seq_PHICH_S4 = 0, 1
+  PHICH_Power_Offset_S4 = 3, 0
+  PHICH_HARQ_Pattern_S4 = ACK, Random
+  PHICH_Wanted_Pattern_S5 = Wanted_User, Interfering_User
+  n_group_PHICH_S5 = 0, 0
+  n_seq_PHICH_S5 = 0, 1
+  PHICH_Power_Offset_S5 = 3, 0
+  PHICH_HARQ_Pattern_S5 = ACK, Random
+  PHICH_Wanted_Pattern_S6 = Wanted_User, Interfering_User
+  n_group_PHICH_S6 = 0, 0
+  n_seq_PHICH_S6 = 0, 1
+  PHICH_Power_Offset_S6 = 3, 0
+  PHICH_HARQ_Pattern_S6 = ACK, Random
+  PHICH_Wanted_Pattern_S9 = Wanted_User, Interfering_User
+  n_group_PHICH_S9 = 0, 0
+  n_seq_PHICH_S9 = 0, 1
+  PHICH_Power_Offset_S9 = 3, 0
+  PHICH_HARQ_Pattern_S9 = ACK, Random
+  
+  //Channel_S
+  Connected_CellID = 0 //同CellID
+  ChannelType = ETU //AWGN, EPA, EVA, ETU, HST, HST_SFN, B_2_4
+  CellType = ServingCell //ServingCell, InterfCellwiInfo, InterfCellwiInfo
+  DopplerShift = 70
+  ChanCorrInd = Low //Low, Mid, High
+  TxFreqOffset = 0
+  RxFreqOffset = 0
+  TimeOffset = 0 //单位s，必须0<=x<=512*0.001/30720=0.000016, 0.000001 = 1us, 0.000000001 = 1ns
+  RxNum = 2 //1,2,4
+  SNR = -2.7
+  
+  //Ref
+  Ref_Type = PHICH_BLER
+  Ref_SNR = 1.3
+  Ref_Value = 0.001
+  
+next_iter
+  SNR = -1.7
+  
+next_iter
+  SNR = -0.7
+  
+next_iter
+  SNR = 0.3
+
+next_iter
+  SNR = 1.3
+  
+next_iter
+  SNR = 2.3
